@@ -20,7 +20,7 @@ root {
 /* BACKEND GENERAL ELEMENTS
    -------------------------------------------------------------------- */
 #header {
-    background-color: #39c678;
+    background-color: #4d677a;
     border-bottom: 4px solid #c0f1d6;
     box-shadow: none;
     border-radius: 0;
@@ -66,12 +66,12 @@ root {
 }
 
 #header #header-menu .menu-item:hover:not(.active) {
-    background-color: #2A8F57;
+    background-color: #9ab939;
 }
 
 #header #header-menu .active {
     color: #C5FFD6;
-    background: #29A067;
+    background: #9ab939;
 }
 
 #footer {
