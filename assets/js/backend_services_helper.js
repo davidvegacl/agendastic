@@ -349,7 +349,7 @@
             '<div class="service-row entry" data-id="' + service.id + '">' +
             '<strong>' + service.name + '</strong><br>' +
             service.duration + ' min - ' +
-            service.price + ' ' + service.currency + '<br>' +
+            service.currency + ' ' + service.price + '<br>' +
             '</div><hr>';
 
         return html;

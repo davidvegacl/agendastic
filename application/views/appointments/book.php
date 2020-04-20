@@ -237,7 +237,7 @@
                                     <label for="city" class="control-label"><?= lang('city'); ?></label>
                                     <input type="text" id="city" class="form-control" maxlength="120" />
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group hide">
                                     <label for="zip-code" class="control-label"><?= lang('zip_code'); ?></label>
                                     <input type="text" id="zip-code" class="form-control" maxlength="120" />
                                 </div>

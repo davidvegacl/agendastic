@@ -515,7 +515,7 @@ window.FrontendBook = window.FrontendBook || {};
             + '<strong class="text-primary">'
             + $('#select-provider option:selected').text() + '<br>'
             + selectedDate + ' ' + $('.selected-hour').text()
-            + servicePrice + ' ' + serviceCurrency
+            + serviceCurrency + ' ' + servicePrice
             + '</strong>' +
             '</p>';
 
@@ -674,11 +674,11 @@ window.FrontendBook = window.FrontendBook || {};
                 }
 
                 if (service.duration != '' && service.duration != null) {
-                    html += '[' + EALang.duration + ' ' + service.duration + ' ' + EALang.minutes + ']';
+                    html += '<br>' + EALang.duration + ': ' + service.duration + ' ' + EALang.minutes + '';
                 }
 
-                if (service.price != '' && service.price != null) {
-                    html += '[' + EALang.price + ' ' + service.price + ' ' + service.currency + ']';
+                if (service.price != '' && service.price != null && service.price != '0') {
+                    html += '<br>' + EALang.price + ': ' + service.currency + ' ' + service.price + '';
                 }
 
                 html += '<br>';
