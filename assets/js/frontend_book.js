@@ -106,7 +106,7 @@ window.FrontendBook = window.FrontendBook || {};
 
         $('#select-date').datepicker({
             dateFormat: 'dd-mm-yy',
-            firstDay: 0,
+            firstDay: 1,
             minDate: 0,
             defaultDate: Date.today(),
 
