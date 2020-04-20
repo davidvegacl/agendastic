@@ -1,0 +1,17 @@
+/*.zip
+/.idea/
+/.tmp-package/
+
+
+/config.php
+/storage/cache/*
+!/storage/cache/.htaccess
+!/storage/cache/index.html
+/storage/logs/*
+!/storage/logs/.htaccess
+!/storage/logs/index.html
+/storage/sessions/*
+!/storage/sessions/.htaccess
+!/storage/sessions/index.html
+/storage/uploads/*
+/!storage/uploads/index.html
