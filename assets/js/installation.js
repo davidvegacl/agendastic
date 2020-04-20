@@ -51,7 +51,7 @@ $(function () {
                 }
 
                 $alert
-                    .text('Easy!Appointments has been successfully installed!')
+                    .text('Agendastic has been successfully installed!')
                     .addClass('alert-success')
                     .show();
 

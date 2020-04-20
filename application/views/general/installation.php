@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Easy!Appointments - Installation</title>
+    <title>Agendastic - Installation</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/bootstrap/css/bootstrap.min.css') ?>">
-    <link rel="icon" type="image/x-icon" href="<?= asset_url('assets/img/favicon.ico') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= asset_url ('assets/ext/jquery-ui/jquery-ui.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/css/general.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/bootstrap/css/bootstrap.min.css'); ?>">
+    <link rel="icon" type="image/x-icon" href="<?= asset_url('assets/img/favicon.ico'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/jquery-ui/jquery-ui.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/css/general.css'); ?>">
 
     <style>
         header {
@@ -49,32 +49,19 @@
 </head>
 <body>
     <div id="loading" class="hidden">
-        <img src="<?= base_url('assets/img/loading.gif') ?>">
+        <img src="<?= base_url('assets/img/loading.gif'); ?>">
     </div>
 
     <header>
-        <a href="http://easyappointments.org" target="_blank">
-            <img src="<?= base_url('assets/img/installation-banner.png') ?>"
-                 alt="Easy!Appointments Installation Banner">
+        <a href="https://github.com/davidvegacl/agendastic" target="_blank">
+            <img src="<?= base_url('assets/img/installation-banner.png'); ?>"
+                 alt="Agendastic Installation Banner">
         </a>
     </header>
 
     <div class="content container-fluid">
         <div class="welcome">
-            <h3>Welcome to the Easy!Appointments installation page.</h3>
-            <p>
-                This page will help you set the main settings of your Easy!Appointments installation.
-                You will be able to edit these settings and many more in the backend session of your
-                system. Remember to use the <strong class="text-primary"><?= site_url('backend') ?></strong>
-                url to connect to the backend section of Easy!Appointments.
-
-                If you face any problems during the usage of Easy!Appointments you can always check the 
-                <a href="http://easyappointments.org/docs.html">Documentation</a>
-                and <a href="http://groups.google.com/group/easy-appointments">Support Group</a> for getting help. You 
-                may also submit new issues on
-                <a href="https://github.com/alextselegidis/easyappointments/issues">GitHub Issues</a>
-                in order to help our development process.
-            </p>
+            <h3>Welcome to the Agendastic installation page.</h3>
         </div>
 
         <div class="alert hidden"></div>
@@ -152,8 +139,8 @@
 
         <p>
             <h3>License</h3>
-            Easy!Appointments is licensed under the <span class="label label-default">GPLv3 license</span>.
-            By using the code of Easy!Appointments in any way <br> you agree with the terms described in the
+            Agendastic is licensed under the <span class="label label-default">GPLv3 license</span>.
+            By using the code of Agendastic in any way <br> you agree with the terms described in the
             following url:
             <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a>
         </p>
@@ -162,27 +149,27 @@
 
         <button type="button" id="install" class="btn btn-success btn-large">
             <i class="icon-white icon-ok"></i>
-            Install Easy!Appointments</button>
+            Install Agendastic</button>
     </div>
 
     <footer>
-        Powered by <a href="http://easyappointments.org">Easy!Appointments</a>
+        Powered by <a href="https://github.com/davidvegacl/agendastic">Agendastic</a>
     </footer>
 
     <script>
         var GlobalVariables = {
-            'csrfToken': <?= json_encode($this->security->get_csrf_hash()) ?>,
-            'baseUrl': <?= json_encode(config('base_url')) ?>
+            'csrfToken': <?= json_encode($this->security->get_csrf_hash()); ?>,
+            'baseUrl': <?= json_encode(config('base_url')); ?>
         };
 
-        var EALang = <?= json_encode($this->lang->language) ?>;
+        var EALang = <?= json_encode($this->lang->language); ?>;
     </script>
 
-    <script src="<?= asset_url('assets/ext/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= asset_url('assets/ext/jquery-ui/jquery-ui.min.js') ?>"></script>
-    <script src="<?= asset_url('assets/ext/bootstrap/js/bootstrap.min.js') ?>"></script>
-    <script src="<?= asset_url('assets/js/general_functions.js') ?>"></script>
-    <script src="<?= asset_url('assets/ext/datejs/date.js') ?>"></script>
-    <script src="<?= asset_url('assets/js/installation.js') ?>"></script>
+    <script src="<?= asset_url('assets/ext/jquery/jquery.min.js'); ?>"></script>
+    <script src="<?= asset_url('assets/ext/jquery-ui/jquery-ui.min.js'); ?>"></script>
+    <script src="<?= asset_url('assets/ext/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?= asset_url('assets/js/general_functions.js'); ?>"></script>
+    <script src="<?= asset_url('assets/ext/datejs/date.js'); ?>"></script>
+    <script src="<?= asset_url('assets/js/installation.js'); ?>"></script>
 </body>
 </html>
