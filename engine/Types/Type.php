@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,21 +14,21 @@
 namespace EA\Engine\Types;
 
 /**
- * Abstract Type Class
+ * Abstract Type Class.
  *
  * This class needs to be extended by the type classes which must implement the validation logic.
  */
-abstract class Type {
+abstract class Type
+{
     /**
-     * Class Constructor
+     * Class Constructor.
      *
-     * @param mixed $value The type value to be validated.
+     * @param mixed $value the type value to be validated
      */
     public function __construct($value)
     {
-        if ( ! $this->_validate($value))
-        {
-            throw new \InvalidArgumentException(__CLASS__ . ': Invalid argument value provided (' . $value . ')');
+        if (!$this->_validate($value)) {
+            throw new \InvalidArgumentException(__CLASS__.': Invalid argument value provided ('.$value.')');
         }
 
         $this->value = $value;
@@ -47,9 +47,9 @@ abstract class Type {
     /**
      * Implement the validation logic in the children classes.
      *
-     * @param mixed $value The value to be validated.
+     * @param mixed $value the value to be validated
      *
-     * @return bool Returns whether the value is valid or not.
+     * @return bool returns whether the value is valid or not
      */
     abstract protected function _validate($value);
 }

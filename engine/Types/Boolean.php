@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,7 +13,8 @@
 
 namespace EA\Engine\Types;
 
-class Boolean extends Type {
+class Boolean extends Type
+{
     protected function _validate($value)
     {
         return is_bool($value);

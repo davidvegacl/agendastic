@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -25,7 +25,7 @@ $(function () {
     });
 
     /**
-     * Event: Install Easy!Appointments Button "Click"
+     * Event: Install Agendastic Button "Click"
      */
     $('#install').click(function () {
         if (!validate()) {

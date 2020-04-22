@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,23 +13,24 @@
 
 namespace EA\Engine\Api\V1;
 
-use \EA\Engine\Types\NonEmptyText;
+use EA\Engine\Types\NonEmptyText;
 
 /**
- * API v1 Authorization Class
+ * API v1 Authorization Class.
  *
  * This class will handle the authorization procedure of the API.
  */
-class Authorization {
+class Authorization
+{
     /**
-     * Framework Instance
+     * Framework Instance.
      *
      * @var CI_Controller
      */
     protected $framework;
 
     /**
-     * Class Constructor
+     * Class Constructor.
      *
      * @param \CI_Controller $framework
      */
@@ -39,19 +40,18 @@ class Authorization {
     }
 
     /**
-     * Perform Basic Authentication
+     * Perform Basic Authentication.
      *
      * @param NonEmptyText $username Admin Username
      * @param NonEmptyText $password Admin Password
      *
-     * @throws \EA\Engine\Api\V1\Exception Throws 401-Unauthorized exception if the authentication fails.
+     * @throws \EA\Engine\Api\V1\Exception throws 401-Unauthorized exception if the authentication fails
      */
     public function basic(NonEmptyText $username, NonEmptyText $password)
     {
         $this->framework->load->model('user_model');
 
-        if ( ! $this->framework->user_model->check_login($username->get(), $password->get()))
-        {
+        if (!$this->framework->user_model->check_login($username->get(), $password->get())) {
             throw new Exception('The provided credentials do not match any admin user!', 401, 'Unauthorized');
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,20 +14,21 @@
 namespace EA\Engine\Api\V1\Parsers;
 
 /**
- * Admins Parser
+ * Admins Parser.
  *
  * This class will handle the encoding and decoding from the API requests.
  */
-class Admins implements ParsersInterface {
+class Admins implements ParsersInterface
+{
     /**
-     * Encode Response Array
+     * Encode Response Array.
      *
-     * @param array &$response The response to be encoded.
+     * @param array &$response The response to be encoded
      */
     public function encode(array &$response)
     {
         $encodedResponse = [
-            'id' => $response['id'] !== NULL ? (int)$response['id'] : NULL,
+            'id' => $response['id'] !== null ? (int) $response['id'] : null,
             'firstName' => $response['first_name'],
             'lastName' => $response['last_name'],
             'email' => $response['email'],
@@ -41,103 +42,86 @@ class Admins implements ParsersInterface {
             'settings' => [
                 'username' => $response['settings']['username'],
                 'notifications' => filter_var($response['settings']['notifications'], FILTER_VALIDATE_BOOLEAN),
-                'calendarView' => $response['settings']['calendar_view']
-            ]
+                'calendarView' => $response['settings']['calendar_view'],
+            ],
         ];
 
         $response = $encodedResponse;
     }
 
     /**
-     * Decode Request
+     * Decode Request.
      *
-     * @param array &$request The request to be decoded.
-     * @param array $base Optional (null), if provided it will be used as a base array.
+     * @param array &$request The request to be decoded
+     * @param array $base     optional (null), if provided it will be used as a base array
      */
-    public function decode(array &$request, array $base = NULL)
+    public function decode(array &$request, array $base = null)
     {
         $decodedRequest = $base ?: [];
 
-        if ( ! empty($request['id']))
-        {
+        if (!empty($request['id'])) {
             $decodedRequest['id'] = $request['id'];
         }
 
-        if ( ! empty($request['firstName']))
-        {
+        if (!empty($request['firstName'])) {
             $decodedRequest['first_name'] = $request['firstName'];
         }
 
-        if ( ! empty($request['lastName']))
-        {
+        if (!empty($request['lastName'])) {
             $decodedRequest['last_name'] = $request['lastName'];
         }
 
-        if ( ! empty($request['email']))
-        {
+        if (!empty($request['email'])) {
             $decodedRequest['email'] = $request['email'];
         }
 
-        if ( ! empty($request['mobile']))
-        {
+        if (!empty($request['mobile'])) {
             $decodedRequest['mobile_number'] = $request['mobile'];
         }
 
-        if ( ! empty($request['phone']))
-        {
+        if (!empty($request['phone'])) {
             $decodedRequest['phone_number'] = $request['phone'];
         }
 
-        if ( ! empty($request['address']))
-        {
+        if (!empty($request['address'])) {
             $decodedRequest['address'] = $request['address'];
         }
 
-        if ( ! empty($request['city']))
-        {
+        if (!empty($request['city'])) {
             $decodedRequest['city'] = $request['city'];
         }
 
-        if ( ! empty($request['state']))
-        {
+        if (!empty($request['state'])) {
             $decodedRequest['state'] = $request['state'];
         }
 
-        if ( ! empty($request['zip']))
-        {
+        if (!empty($request['zip'])) {
             $decodedRequest['zip_code'] = $request['zip'];
         }
 
-        if ( ! empty($request['notes']))
-        {
+        if (!empty($request['notes'])) {
             $decodedRequest['notes'] = $request['notes'];
         }
 
-        if ( ! empty($request['settings']))
-        {
-            if (empty($decodedRequest['settings']))
-            {
+        if (!empty($request['settings'])) {
+            if (empty($decodedRequest['settings'])) {
                 $decodedRequest['settings'] = [];
             }
 
-            if ( ! empty($request['settings']['username']))
-            {
+            if (!empty($request['settings']['username'])) {
                 $decodedRequest['settings']['username'] = $request['settings']['username'];
             }
 
-            if ( ! empty($request['settings']['password']))
-            {
+            if (!empty($request['settings']['password'])) {
                 $decodedRequest['settings']['password'] = $request['settings']['password'];
             }
 
-            if ($request['settings']['notifications'] !== NULL)
-            {
+            if ($request['settings']['notifications'] !== null) {
                 $decodedRequest['settings']['notifications'] = filter_var($request['settings']['notifications'],
                     FILTER_VALIDATE_BOOLEAN);
             }
 
-            if ( ! empty($request['settings']['calendarView']))
-            {
+            if (!empty($request['settings']['calendarView'])) {
                 $decodedRequest['settings']['calendar_view'] = $request['settings']['calendarView'];
             }
         }

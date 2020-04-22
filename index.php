@@ -38,10 +38,10 @@
 
  /*
   *---------------------------------------------------------------
-  * EASY!APPOINTMENTS CONFIGURATION
+  * Agendastic CONFIGURATION
   *---------------------------------------------------------------
   *
-  * Include Easy!Appointments configuration file so that it is available
+  * Include Agendastic configuration file so that it is available
   * globally in the application. You can access configuration information
   * through the static Config class.
   *
@@ -54,7 +54,7 @@
   * EASY!APPOINTMENTS AUTOLOAD FILE
   *---------------------------------------------------------------
   *
-  * Include Easy!Appointments autoload file so that namespace 
+  * Include Agendastic autoload file so that namespace 
   * classes are loaded automatically.
   *
   */

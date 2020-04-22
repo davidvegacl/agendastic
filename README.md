@@ -4,7 +4,7 @@ Agendastic
 
 Agendastic es un sistema web de agendamiento para servicios como barberías, centros de salud, 
 profesionales que prestan servicios, entre otros. Está basado íntegramente en el software
-**Easy!Appointments** (https://github.com/alextselegidis/easyappointments) creado por Alex Tselegidis.
+**Agendastic** (https://github.com/alextselegidis/easyappointments) creado por Alex Tselegidis.
 
 ### Características
 

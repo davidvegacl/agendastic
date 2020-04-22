@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -23,7 +23,7 @@ window.Backend = window.Backend || {};
     'use strict';
 
     /**
-     * Main javascript code for the backend of Easy!Appointments.
+     * Main javascript code for the backend of Agendastic.
      */
     $(document).ready(function () {
         window.console = window.console || function () {

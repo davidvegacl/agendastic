@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -54,7 +54,7 @@ class Google extends CI_Controller {
      * tokens in the future.
      *
      * IMPORTANT: Because it is necessary to authorize the application using the web server flow (see official
-     * documentation of OAuth), every Easy!Appointments installation should use its own calendar api key. So in every
+     * documentation of OAuth), every Agendastic installation should use its own calendar api key. So in every
      * api console account, the "http://path-to-e!a/google/oauth_callback" should be included in an allowed redirect URL.
      */
     public function oauth_callback()
@@ -84,7 +84,7 @@ class Google extends CI_Controller {
     }
 
     /**
-     * Complete synchronization of appointments between Google Calendar and Easy!Appointments.
+     * Complete synchronization of appointments between Google Calendar and Agendastic.
      *
      * This method will completely sync the appointments of a provider with his Google Calendar account. The sync period
      * needs to be relatively small, because a lot of API calls might be necessary and this will lead to consuming the
@@ -180,7 +180,7 @@ class Google extends CI_Controller {
 
                         if ($google_event->status == 'cancelled')
                         {
-                            throw new Exception('Event is cancelled, remove the record from Easy!Appointments.');
+                            throw new Exception('Event is cancelled, remove the record from Agendastic.');
                         }
 
                         // If gcal event is different from e!a appointment then update e!a record.

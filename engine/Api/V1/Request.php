@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,12 +14,13 @@
 namespace EA\Engine\Api\V1;
 
 /**
- * Request Class
+ * Request Class.
  *
  * This class handles the common request handling before the data are manipulated and
  * returned back with the Response class.
  */
-class Request {
+class Request
+{
     /**
      * Get request body as an associative array.
      *
@@ -27,6 +28,6 @@ class Request {
      */
     public function getBody()
     {
-        return json_decode(file_get_contents('php://input'), TRUE);
+        return json_decode(file_get_contents('php://input'), true);
     }
 }

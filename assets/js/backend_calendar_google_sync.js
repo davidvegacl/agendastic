@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -40,7 +40,7 @@ window.BackendCalendarGoogleSync = window.BackendCalendarGoogleSync || {};
 
                 var redirectUrl = GlobalVariables.baseUrl + '/index.php/google/oauth_callback';
 
-                var windowHandle = window.open(authUrl, 'Authorize Easy!Appointments',
+                var windowHandle = window.open(authUrl, 'Authorize Agendastic',
                     'width=800, height=600');
 
                 var authInterval = window.setInterval(function () {

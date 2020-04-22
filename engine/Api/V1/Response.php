@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -16,7 +16,7 @@ namespace EA\Engine\Api\V1;
 use EA\Engine\Types\NonEmptyText;
 
 /**
- * API v1 Response
+ * API v1 Response.
  *
  * Use chain-calls of the class methods to easily manipulate the provided response array. This class will
  * use directly the provided GET parameters for easier manipulation.
@@ -26,7 +26,8 @@ use EA\Engine\Types\NonEmptyText;
  *   $response = new \EA\Engine\Api\V1\Response($data);
  *   $response->format($parser)->search()->sort()->paginate()->minimize()->output();
  */
-class Response {
+class Response
+{
     /**
      * Contains the response information.
      *
@@ -35,9 +36,9 @@ class Response {
     protected $response;
 
     /**
-     * Class Constructor
+     * Class Constructor.
      *
-     * @param array $response Provide unfiltered data to be processed as an array.
+     * @param array $response provide unfiltered data to be processed as an array
      */
     public function __construct(array $response)
     {
@@ -47,14 +48,13 @@ class Response {
     /**
      * Encode the response entries to the API compatible structure.
      *
-     * @param Parsers\ParsersInterface $parser Provide the corresponding parser class.
+     * @param Parsers\ParsersInterface $parser provide the corresponding parser class
      *
      * @return \EA\Engine\Api\V1\Response
      */
     public function encode(Parsers\ParsersInterface $parser)
     {
-        foreach ($this->response as &$entry)
-        {
+        foreach ($this->response as &$entry) {
             $parser->encode($entry);
         }
 
@@ -115,15 +115,14 @@ class Response {
      * This is useful whenever the client requests only a single entry. Make sure that you call this method
      * right before the output() in order to avoid side-effects with the other processor methods of this class.
      *
-     * @param int $id Provide the ID value of the request UI and if is not null the response will be
-     * converted into an associative array.
+     * @param int $id provide the ID value of the request UI and if is not null the response will be
+     *                converted into an associative array
      *
      * @return \EA\Engine\Api\V1\Response
      */
     public function singleEntry($id)
     {
-        if ($id !== NULL)
-        {
+        if ($id !== null) {
             $this->response = array_shift($this->response);
         }
 
@@ -134,15 +133,15 @@ class Response {
      * Output the response as a JSON with the provided status header.
      *
      * @param \EA\Engine\Types\NonEmptyText $status Optional (null), if provided it must contain the status
-     * header value. Default string: '200 OK'.
+     *                                              header value. Default string: '200 OK'.
      *
      * @return \EA\Engine\Api\V1\Response
      */
-    public function output(NonEmptyText $status = NULL)
+    public function output(NonEmptyText $status = null)
     {
         $header = $status ? $status->get() : '200 OK';
 
-        header('HTTP/1.0 ' . $header);
+        header('HTTP/1.0 '.$header);
         header('Content-Type: application/json');
 
         echo json_encode($this->response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);

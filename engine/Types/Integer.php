@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,9 +13,10 @@
 
 namespace EA\Engine\Types;
 
-class Integer extends Type {
+class Integer extends Type
+{
     protected function _validate($value)
     {
-        return is_numeric($value) && ! is_float($value);
+        return is_numeric($value) && !is_float($value);
     }
 }

@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
-| Easy!Appointments - Internal Configuration
+| Agendastic - Internal Configuration
 |--------------------------------------------------------------------------
 |
-| Declare some of the global config values of Easy!Appointments.
+| Declare some of the global config values of Agendastic.
 |
 */
 $config['version'] = '1.0.0'; // This must be changed manually.

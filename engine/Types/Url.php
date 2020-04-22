@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,7 +13,8 @@
 
 namespace EA\Engine\Types;
 
-class Url extends NonEmptyText {
+class Url extends NonEmptyText
+{
     protected function _validate($value)
     {
         return parent::_validate($value) && filter_var($value, FILTER_VALIDATE_URL);

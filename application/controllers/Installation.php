@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,7 +14,7 @@
 /**
  * Installation Controller
  *
- * This controller will handle the installation procedure of Easy!Appointments
+ * This controller will handle the installation procedure of Agendastic
  *
  * @package Controllers
  */
@@ -57,7 +57,7 @@ class Installation extends CI_Controller {
     }
 
     /**
-     * [AJAX] Installs Easy!Appointments on the server.
+     * [AJAX] Installs Agendastic on the server.
      *
      * Required POST Parameters
      *

@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,7 +14,7 @@
 namespace EA\Engine\Api\V1\Processors;
 
 /**
- * Paginate Processor
+ * Paginate Processor.
  *
  * This class will handle the pagination GET parameters ("page", "length"). The "page" parameter
  * is required in order for the pagination to work. The "length" is optional and the default value
@@ -23,24 +23,24 @@ namespace EA\Engine\Api\V1\Processors;
  * Make sure that the response parameter is a sequential array and not a single entry by the time this
  * processor is executed.
  */
-class Paginate implements ProcessorsInterface {
+class Paginate implements ProcessorsInterface
+{
     /**
-     * Process Response Array
+     * Process Response Array.
      *
      * Example:
      *   http://ea-installation.com/api/v1/appointments?page=3&length=30
      *
-     * @param array &$response The response array to be processed.
+     * @param array &$response The response array to be processed
      */
     public static function process(array &$response)
     {
-        if ( ! isset($_GET['page']) || empty($response))
-        {
+        if (!isset($_GET['page']) || empty($response)) {
             return;
         }
 
-        $page = (int)$_GET['page'];
-        $length = isset($_GET['length']) ? (int)$_GET['length'] : 20;
+        $page = (int) $_GET['page'];
+        $length = isset($_GET['length']) ? (int) $_GET['length'] : 20;
 
         $chunks = array_chunk($response, $length);
 

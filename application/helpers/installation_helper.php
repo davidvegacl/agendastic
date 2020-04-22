@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,9 +14,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * ---------------------------------------------------------------------------- */
 
 /**
- * Check if Easy!Appointments is installed.
+ * Check if Agendastic is installed.
  *
- * This function will check some factors to determine if Easy!Appointments is
+ * This function will check some factors to determine if Agendastic is
  * installed or not. It is possible that the installation is properly configure
  * without being recognized by this method.
  *

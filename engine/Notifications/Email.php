@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,21 +13,22 @@
 
 namespace EA\Engine\Notifications;
 
-use \EA\Engine\Types\Text;
-use \EA\Engine\Types\NonEmptyText;
-use \EA\Engine\Types\Url;
-use \EA\Engine\Types\Email as EmailAddress;
+use EA\Engine\Types\Text;
+use EA\Engine\Types\NonEmptyText;
+use EA\Engine\Types\Url;
+use EA\Engine\Types\Email as EmailAddress;
 
 /**
- * Email Notifications Class
+ * Email Notifications Class.
  *
  * This library handles all the notification email deliveries on the system.
  *
  * Important: The email configuration settings are located at: /application/config/email.php
  */
-class Email {
+class Email
+{
     /**
-     * Framework Instance
+     * Framework Instance.
      *
      * @var CI_Controller
      */
@@ -41,10 +42,10 @@ class Email {
     protected $config;
 
     /**
-     * Class Constructor
+     * Class Constructor.
      *
      * @param \CI_Controller $framework
-     * @param array $config Contains the email configuration to be used.
+     * @param array          $config    contains the email configuration to be used
      */
     public function __construct(\CI_Controller $framework, array $config)
     {
@@ -58,15 +59,14 @@ class Email {
      * This method finds and replaces the html variables of an email template. It is used to
      * generate dynamic HTML emails that are send as notifications to the system users.
      *
-     * @param array $replaceArray Array that contains the variables to be replaced.
-     * @param string $templateHtml The email template HTML.
+     * @param array  $replaceArray array that contains the variables to be replaced
+     * @param string $templateHtml the email template HTML
      *
-     * @return string Returns the new email html that contain the variables of the $replaceArray.
+     * @return string returns the new email html that contain the variables of the $replaceArray
      */
     protected function _replaceTemplateVariables(array $replaceArray, $templateHtml)
     {
-        foreach ($replaceArray as $name => $value)
-        {
+        foreach ($replaceArray as $name => $value) {
             $templateHtml = str_replace($name, $value, $templateHtml);
         }
 
@@ -79,18 +79,18 @@ class Email {
      * This email template also needs an email title and an email text in order to complete
      * the appointment details.
      *
-     * @param array $appointment Contains the appointment data.
-     * @param array $provider Contains the provider data.
-     * @param array $service Contains the service data.
-     * @param array $customer Contains the customer data.
-     * @param array $company Contains settings of the company. By the time the
-     * "company_name", "company_link" and "company_email" values are required in the array.
-     * @param \EA\Engine\Types\Text $title The email title may vary depending the receiver.
-     * @param \EA\Engine\Types\Text $message The email message may vary depending the receiver.
-     * @param \EA\Engine\Types\Url $appointmentLink This link is going to enable the receiver to make changes
-     * to the appointment record.
-     * @param \EA\Engine\Types\Email $recipientEmail The recipient email address.
-     * @param \EA\Engine\Types\Text $icsStream Stream contents of the ICS file.
+     * @param array                  $appointment     contains the appointment data
+     * @param array                  $provider        contains the provider data
+     * @param array                  $service         contains the service data
+     * @param array                  $customer        contains the customer data
+     * @param array                  $company         Contains settings of the company. By the time the
+     *                                                "company_name", "company_link" and "company_email" values are required in the array.
+     * @param \EA\Engine\Types\Text  $title           the email title may vary depending the receiver
+     * @param \EA\Engine\Types\Text  $message         the email message may vary depending the receiver
+     * @param \EA\Engine\Types\Url   $appointmentLink this link is going to enable the receiver to make changes
+     *                                                to the appointment record
+     * @param \EA\Engine\Types\Email $recipientEmail  the recipient email address
+     * @param \EA\Engine\Types\Text  $icsStream       stream contents of the ICS file
      */
     public function sendAppointmentDetails(
         array $appointment,
@@ -104,8 +104,7 @@ class Email {
         EmailAddress $recipientEmail,
         Text $icsStream
     ) {
-        switch ($company['date_format'])
-        {
+        switch ($company['date_format']) {
             case 'DMY':
                 $date_format = 'd/m/Y';
                 break;
@@ -116,11 +115,10 @@ class Email {
                 $date_format = 'Y/m/d';
                 break;
             default:
-                throw new \Exception('Invalid date_format value: ' . $company['date_format']);
+                throw new \Exception('Invalid date_format value: '.$company['date_format']);
         }
 
-        switch ($company['time_format'])
-        {
+        switch ($company['time_format']) {
             case 'military':
                 $timeFormat = 'H:i';
                 break;
@@ -128,7 +126,7 @@ class Email {
                 $timeFormat = 'g:i A';
                 break;
             default:
-                throw new \Exception('Invalid time_format value: ' . $company['time_format']);
+                throw new \Exception('Invalid time_format value: '.$company['time_format']);
         }
 
         // Prepare template replace array.
@@ -136,13 +134,13 @@ class Email {
             '$email_title' => $title->get(),
             '$email_message' => $message->get(),
             '$appointment_service' => $service['name'],
-            '$appointment_provider' => $provider['first_name'] . ' ' . $provider['last_name'],
-            '$appointment_start_date' => date($date_format . ' ' . $timeFormat, strtotime($appointment['start_datetime'])),
-            '$appointment_end_date' => date($date_format . ' ' . $timeFormat, strtotime($appointment['end_datetime'])),
+            '$appointment_provider' => $provider['first_name'].' '.$provider['last_name'],
+            '$appointment_start_date' => date($date_format.' '.$timeFormat, strtotime($appointment['start_datetime'])),
+            '$appointment_end_date' => date($date_format.' '.$timeFormat, strtotime($appointment['end_datetime'])),
             '$appointment_link' => $appointmentLink->get(),
             '$company_link' => $company['company_link'],
             '$company_name' => $company['company_name'],
-            '$customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
+            '$customer_name' => $customer['first_name'].' '.$customer['last_name'],
             '$customer_email' => $customer['email'],
             '$customer_phone' => $customer['phone_number'],
             '$customer_address' => $customer['address'],
@@ -158,10 +156,10 @@ class Email {
             'Email' => $this->framework->lang->line('email'),
             'Phone' => $this->framework->lang->line('phone'),
             'Address' => $this->framework->lang->line('address'),
-            'Appointment Link' => $this->framework->lang->line('appointment_link_title')
+            'Appointment Link' => $this->framework->lang->line('appointment_link_title'),
         ];
 
-        $html = file_get_contents(__DIR__ . '/../../application/views/emails/appointment_details.php');
+        $html = file_get_contents(__DIR__.'/../../application/views/emails/appointment_details.php');
         $html = $this->_replaceTemplateVariables($replaceArray, $html);
 
         $mailer = $this->_createMailer();
@@ -174,10 +172,9 @@ class Email {
 
         $mailer->addStringAttachment($icsStream->get(), 'invitation.ics');
 
-        if ( ! $mailer->Send())
-        {
-            throw new \RuntimeException('Email could not been sent. Mailer Error (Line ' . __LINE__ . '): '
-                . $mailer->ErrorInfo);
+        if (!$mailer->Send()) {
+            throw new \RuntimeException('Email could not been sent. Mailer Error (Line '.__LINE__.'): '
+                .$mailer->ErrorInfo);
         }
     }
 
@@ -190,14 +187,14 @@ class Email {
      * <strong>IMPORTANT!</strong> This method's arguments should be taken
      * from database before the appointment record is deleted.
      *
-     * @param array $appointment The record data of the removed appointment.
-     * @param array $provider The record data of the appointment provider.
-     * @param array $service The record data of the appointment service.
-     * @param array $customer The record data of the appointment customer.
-     * @param array $company Some settings that are required for this function. By now this array must contain
-     * the following values: "company_link", "company_name", "company_email".
-     * @param \EA\Engine\Types\Email $recipientEmail The email address of the email recipient.
-     * @param \EA\Engine\Types\Text $reason The reason why the appointment is deleted.
+     * @param array                  $appointment    the record data of the removed appointment
+     * @param array                  $provider       the record data of the appointment provider
+     * @param array                  $service        the record data of the appointment service
+     * @param array                  $customer       the record data of the appointment customer
+     * @param array                  $company        Some settings that are required for this function. By now this array must contain
+     *                                               the following values: "company_link", "company_name", "company_email".
+     * @param \EA\Engine\Types\Email $recipientEmail the email address of the email recipient
+     * @param \EA\Engine\Types\Text  $reason         the reason why the appointment is deleted
      */
     public function sendDeleteAppointment(
         array $appointment,
@@ -208,8 +205,7 @@ class Email {
         EmailAddress $recipientEmail,
         Text $reason
     ) {
-        switch ($company['date_format'])
-        {
+        switch ($company['date_format']) {
             case 'DMY':
                 $date_format = 'd/m/Y';
                 break;
@@ -220,11 +216,10 @@ class Email {
                 $date_format = 'Y/m/d';
                 break;
             default:
-                throw new \Exception('Invalid date_format value: ' . $company['date_format']);
+                throw new \Exception('Invalid date_format value: '.$company['date_format']);
         }
 
-        switch ($company['time_format'])
-        {
+        switch ($company['time_format']) {
             case 'military':
                 $timeFormat = 'H:i';
                 break;
@@ -232,7 +227,7 @@ class Email {
                 $timeFormat = 'g:i A';
                 break;
             default:
-                throw new \Exception('Invalid time_format value: ' . $company['time_format']);
+                throw new \Exception('Invalid time_format value: '.$company['time_format']);
         }
 
         // Prepare email template data.
@@ -240,12 +235,12 @@ class Email {
             '$email_title' => $this->framework->lang->line('appointment_cancelled_title'),
             '$email_message' => $this->framework->lang->line('appointment_removed_from_schedule'),
             '$appointment_service' => $service['name'],
-            '$appointment_provider' => $provider['first_name'] . ' ' . $provider['last_name'],
-            '$appointment_date' => date($date_format . ' ' . $timeFormat, strtotime($appointment['start_datetime'])),
-            '$appointment_duration' => $service['duration'] . ' ' . $this->framework->lang->line('minutes'),
+            '$appointment_provider' => $provider['first_name'].' '.$provider['last_name'],
+            '$appointment_date' => date($date_format.' '.$timeFormat, strtotime($appointment['start_datetime'])),
+            '$appointment_duration' => $service['duration'].' '.$this->framework->lang->line('minutes'),
             '$company_link' => $company['company_link'],
             '$company_name' => $company['company_name'],
-            '$customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
+            '$customer_name' => $customer['first_name'].' '.$customer['last_name'],
             '$customer_email' => $customer['email'],
             '$customer_phone' => $customer['phone_number'],
             '$customer_address' => $customer['address'],
@@ -262,10 +257,10 @@ class Email {
             'Email' => $this->framework->lang->line('email'),
             'Phone' => $this->framework->lang->line('phone'),
             'Address' => $this->framework->lang->line('address'),
-            'Reason' => $this->framework->lang->line('reason')
+            'Reason' => $this->framework->lang->line('reason'),
         ];
 
-        $html = file_get_contents(__DIR__ . '/../../application/views/emails/delete_appointment.php');
+        $html = file_get_contents(__DIR__.'/../../application/views/emails/delete_appointment.php');
         $html = $this->_replaceTemplateVariables($replaceArray, $html);
 
         $mailer = $this->_createMailer();
@@ -277,19 +272,18 @@ class Email {
         $mailer->Subject = $this->framework->lang->line('appointment_cancelled_title');
         $mailer->Body = $html;
 
-        if ( ! $mailer->Send())
-        {
-            throw new \RuntimeException('Email could not been sent. Mailer Error (Line ' . __LINE__ . '): '
-                . $mailer->ErrorInfo);
+        if (!$mailer->Send()) {
+            throw new \RuntimeException('Email could not been sent. Mailer Error (Line '.__LINE__.'): '
+                .$mailer->ErrorInfo);
         }
     }
 
     /**
      * This method sends an email with the new password of a user.
      *
-     * @param \EA\Engine\Types\NonEmptyText $password Contains the new password.
-     * @param \EA\Engine\Types\Email $recipientEmail The receiver's email address.
-     * @param array $company The company settings to be included in the email.
+     * @param \EA\Engine\Types\NonEmptyText $password       contains the new password
+     * @param \EA\Engine\Types\Email        $recipientEmail the receiver's email address
+     * @param array                         $company        the company settings to be included in the email
      */
     public function sendPassword(NonEmptyText $password, EmailAddress $recipientEmail, array $company)
     {
@@ -299,10 +293,10 @@ class Email {
             '$company_name' => $company['company_name'],
             '$company_email' => $company['company_email'],
             '$company_link' => $company['company_link'],
-            '$password' => '<strong>' . $password->get() . '</strong>'
+            '$password' => '<strong>'.$password->get().'</strong>',
         ];
 
-        $html = file_get_contents(__DIR__ . '/../../application/views/emails/new_password.php');
+        $html = file_get_contents(__DIR__.'/../../application/views/emails/new_password.php');
         $html = $this->_replaceTemplateVariables($replaceArray, $html);
 
         $mailer = $this->_createMailer();
@@ -313,27 +307,25 @@ class Email {
         $mailer->Subject = $this->framework->lang->line('new_account_password');
         $mailer->Body = $html;
 
-        if ( ! $mailer->Send())
-        {
-            throw new \RuntimeException('Email could not been sent. Mailer Error (Line ' . __LINE__ . '): '
-                . $mailer->ErrorInfo);
+        if (!$mailer->Send()) {
+            throw new \RuntimeException('Email could not been sent. Mailer Error (Line '.__LINE__.'): '
+                .$mailer->ErrorInfo);
         }
     }
 
     /**
-     * Create PHP Mailer Instance
+     * Create PHP Mailer Instance.
      *
      * @return \PHPMailer
      */
     protected function _createMailer()
     {
-        $mailer = new \PHPMailer;
+        $mailer = new \PHPMailer();
 
-        if ($this->config['protocol'] === 'smtp')
-        {
+        if ($this->config['protocol'] === 'smtp') {
             $mailer->isSMTP();
             $mailer->Host = $this->config['smtp_host'];
-            $mailer->SMTPAuth = TRUE;
+            $mailer->SMTPAuth = true;
             $mailer->Username = $this->config['smtp_user'];
             $mailer->Password = $this->config['smtp_pass'];
             $mailer->SMTPSecure = $this->config['smtp_crypto'];

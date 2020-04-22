@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -13,6 +13,7 @@
 
 namespace EA\Engine\Api\V1\Processors;
 
-interface ProcessorsInterface {
+interface ProcessorsInterface
+{
     public static function process(array &$response);
-} 
+}

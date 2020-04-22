@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,20 +14,21 @@
 namespace EA\Engine\Api\V1\Parsers;
 
 /**
- * Customers Parser
+ * Customers Parser.
  *
  * This class will handle the encoding and decoding from the API requests.
  */
-class Customers implements ParsersInterface {
+class Customers implements ParsersInterface
+{
     /**
-     * Encode Response Array
+     * Encode Response Array.
      *
-     * @param array &$response The response to be encoded.
+     * @param array &$response The response to be encoded
      */
     public function encode(array &$response)
     {
         $encodedResponse = [
-            'id' => $response['id'] !== NULL ? (int)$response['id'] : NULL,
+            'id' => $response['id'] !== null ? (int) $response['id'] : null,
             'firstName' => $response['first_name'],
             'lastName' => $response['last_name'],
             'email' => $response['email'],
@@ -35,64 +36,55 @@ class Customers implements ParsersInterface {
             'address' => $response['address'],
             'city' => $response['city'],
             'zip' => $response['zip_code'],
-            'notes' => $response['notes']
+            'notes' => $response['notes'],
         ];
 
         $response = $encodedResponse;
     }
 
     /**
-     * Decode Request
+     * Decode Request.
      *
-     * @param array &$request The request to be decoded.
-     * @param array $base Optional (null), if provided it will be used as a base array.
+     * @param array &$request The request to be decoded
+     * @param array $base     optional (null), if provided it will be used as a base array
      */
-    public function decode(array &$request, array $base = NULL)
+    public function decode(array &$request, array $base = null)
     {
         $decodedRequest = $base ?: [];
 
-        if ( ! empty($request['id']))
-        {
+        if (!empty($request['id'])) {
             $decodedRequest['id'] = $request['id'];
         }
 
-        if ( ! empty($request['firstName']))
-        {
+        if (!empty($request['firstName'])) {
             $decodedRequest['first_name'] = $request['firstName'];
         }
 
-        if ( ! empty($request['lastName']))
-        {
+        if (!empty($request['lastName'])) {
             $decodedRequest['last_name'] = $request['lastName'];
         }
 
-        if ( ! empty($request['email']))
-        {
+        if (!empty($request['email'])) {
             $decodedRequest['email'] = $request['email'];
         }
 
-        if ( ! empty($request['phone']))
-        {
+        if (!empty($request['phone'])) {
             $decodedRequest['phone_number'] = $request['phone'];
         }
 
-        if ( ! empty($request['address']))
-        {
+        if (!empty($request['address'])) {
             $decodedRequest['address'] = $request['address'];
         }
 
-        if ( ! empty($request['city']))
-        {
+        if (!empty($request['city'])) {
             $decodedRequest['city'] = $request['city'];
         }
 
-        if ( ! empty($request['zip']))
-        {
+        if (!empty($request['zip'])) {
             $decodedRequest['zip_code'] = $request['zip'];
         }
 
-        if ( ! empty($request['notes']))
-        {
+        if (!empty($request['notes'])) {
             $decodedRequest['notes'] = $request['notes'];
         }
 

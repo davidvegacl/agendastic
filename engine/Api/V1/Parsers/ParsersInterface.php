@@ -1,7 +1,7 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Easy!Appointments - Open Source Web Scheduler
+ * Agendastic - Open Source Web Scheduler
  *
  * @package     EasyAppointments
  * @author      A.Tselegidis <alextselegidis@gmail.com>
@@ -14,23 +14,24 @@
 namespace EA\Engine\Api\V1\Parsers;
 
 /**
- * Parsers Interface
+ * Parsers Interface.
  *
  * Every parser needs the "encode" and "decode" methods.
  */
-interface ParsersInterface {
+interface ParsersInterface
+{
     /**
-     * Encode Response Array
+     * Encode Response Array.
      *
-     * @param array &$response The response to be encoded.
+     * @param array &$response The response to be encoded
      */
     public function encode(array &$response);
 
     /**
-     * Decode Request
+     * Decode Request.
      *
-     * @param array &$request The request to be decoded.
-     * @param array $base Optional (null), if provided it will be used as a base array.
+     * @param array &$request The request to be decoded
+     * @param array $base     optional (null), if provided it will be used as a base array
      */
-    public function decode(array &$request, array $base = NULL);
-} 
+    public function decode(array &$request, array $base = null);
+}
