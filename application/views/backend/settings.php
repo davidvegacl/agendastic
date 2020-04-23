@@ -532,12 +532,8 @@
 
                 <br><br>
 
-                <a href="https://github.com/davidvegacl/agendastic">
+                <a href="https://agendastic.davidvega.cl">
                     <?= lang('official_website'); ?>
-                </a>
-                |
-                <a href="https://github.com/davidvegacl/agendastic/issues">
-                    <?= lang('project_issues'); ?>
                 </a>
             </p>
 

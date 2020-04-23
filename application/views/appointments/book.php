@@ -335,7 +335,7 @@
 
                 <div id="frame-footer">
                     Provisto por
-                    <a href="https://github.com/davidvegacl/agendastic" target="_blank">Agendastic</a>
+                    <a href="https://agendastic.davidvega.cl" target="_blank">Agendastic</a>
                     |
                     <a href="<?= site_url('backend'); ?>">
                         <?= $this->session->user_id ? lang('backend_section') : lang('login'); ?>

@@ -1,7 +1,7 @@
 <div id="footer">
     <div id="footer-content" class="col-xs-12 col-sm-8">
         Powered by
-        <a href="https://github.com/davidvegacl/agendastic">Agendastic
+        <a href="https://agendastic.davidvega.cl">Agendastic
             <?php
                 echo 'v'.$this->config->item('version');
 

@@ -53,7 +53,7 @@
     </div>
 
     <header>
-        <a href="https://github.com/davidvegacl/agendastic" target="_blank">
+        <a href="https://agendastic.davidvega.cl" target="_blank">
             <img src="<?= base_url('assets/img/installation-banner.png'); ?>"
                  alt="Agendastic Installation Banner">
         </a>
@@ -143,7 +143,7 @@
     </div>
 
     <footer>
-        Powered by <a href="https://github.com/davidvegacl/agendastic">Agendastic</a>
+        Powered by <a href="https://agendastic.davidvega.cl">Agendastic</a>
     </footer>
 
     <script>
