@@ -334,12 +334,8 @@
                 <!-- FRAME FOOTER -->
 
                 <div id="frame-footer">
-                    Powered By
+                    Provisto por
                     <a href="https://github.com/davidvegacl/agendastic" target="_blank">Agendastic</a>
-                    |
-                    <span id="select-language" class="label label-success">
-    		        	<?= ucfirst($this->config->item('language')); ?>
-    		        </span>
                     |
                     <a href="<?= site_url('backend'); ?>">
                         <?= $this->session->user_id ? lang('backend_section') : lang('login'); ?>
