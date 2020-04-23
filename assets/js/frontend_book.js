@@ -509,13 +509,19 @@ window.FrontendBook = window.FrontendBook || {};
             }
         });
 
+        var priceText = '';
+        if(servicePrice>0) {
+            priceText = serviceCurrency + ' ' + servicePrice + '<br>';
+        }
+
         var html =
             '<h4>' + $('#select-service option:selected').text() + '</h4>' +
             '<p>'
             + '<strong class="text-primary">'
             + $('#select-provider option:selected').text() + '<br>'
-            + selectedDate + ' ' + $('.selected-hour').text()
-            + serviceCurrency + ' ' + servicePrice
+            + selectedDate + '<br> ' 
+            + $('.selected-hour').text() + '<br>'
+            + priceText
             + '</strong>' +
             '</p>';
 
@@ -529,6 +535,7 @@ window.FrontendBook = window.FrontendBook || {};
         var address = GeneralFunctions.escapeHtml($('#address').val());
         var city = GeneralFunctions.escapeHtml($('#city').val());
         var zipCode = GeneralFunctions.escapeHtml($('#zip-code').val());
+        var notes = GeneralFunctions.escapeHtml($('#notes').val());
 
         html =
             '<h4>' + firstName + ' ' + lastName + '</h4>' +
@@ -541,7 +548,7 @@ window.FrontendBook = window.FrontendBook || {};
             '<br/>' +
             EALang.city + ': ' + city +
             '<br/>' +
-            EALang.zip_code + ': ' + zipCode +
+            EALang.notes + ': ' + notes +
             '</p>';
 
         $('#customer-details').html(html);
