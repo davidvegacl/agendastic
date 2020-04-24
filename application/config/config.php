@@ -40,7 +40,7 @@ $config['base_url'] = Config::BASE_URL;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = Config::INDEX_PAGE;
 
 /*
 |--------------------------------------------------------------------------
